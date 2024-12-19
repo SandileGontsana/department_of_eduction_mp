@@ -1,0 +1,31 @@
+name: Unzip and Deploy Workflow
+
+# Trigger the workflow on push to the main branch or pull requests
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  unzip:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Step 1: Checkout the repository
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+
+    # Step 2: Unzip the file
+    - name: Unzip File
+      run: unzip mpuluzi_project_UPD.zip -d extracted_folder
+
+    # Step 3: Display contents of extracted folder (optional)
+    - name: List Extracted Files
+      run: ls extracted_folder
+
+    # Step 4: Optional - Perform additional actions (e.g., deployment)
+    - name: Deploy or Process Extracted Files
+      run: echo "Add your custom deployment or processing script here"
